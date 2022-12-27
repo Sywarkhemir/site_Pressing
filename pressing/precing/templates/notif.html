@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Pressing</title>
+	<link type="image/x-icon" href="{% static 'img/tsh.png' %}" rel="icon">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css'   %}">
+</head>
+
+<body>
+	<div class="main-wrapper">
+{% include "include/headerlogin.html" %}
+  {% block content %}
+  <div style="margin-left:35%;margin-top:2%;color:#00e883;" class="display-4">
+       All Feedbacks
+  </div>
+  {% if size == 1 %}
+  <div class="" style="margin-top:2%;margin-bottom:2%;">
+    {% for noti in notifs %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-left:2%;margin-right:2%;">
+      <strong>{{noti.created_at}}</strong> :  {{noti.content}}
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div style="margin-left:35%;margin-top:2%;color:#00e883;" class="display-4">
+      <img src="{% static 'img/search.png'%}" class="card-img-top" style="width:10%;margin-top:2%;margin-left:20%;" ><br>
+                 No Feedbacks.
+    </div>
+{% endif %}
+  {% endblock %}
+</div>
+	{% include "include/footer.html" %}
+
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/slick.js' %}"></script>
+	<script src="{% static 'plugins/fancybox/jquery.fancybox.min.js' %}"></script>
+
+	<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

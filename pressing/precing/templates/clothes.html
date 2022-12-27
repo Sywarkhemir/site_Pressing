@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<title>Pressing</title>
+	<link type="image/x-icon" href="{% static 'img/tsh.png' %}" rel="icon">
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/fontawesome/css/fontawesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.min.css' %}">
+	<link rel="stylesheet" href="{% static 'plugins/select2/css/select2.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css'   %}">
+</head>
+
+<body>
+
+	<div class="main-wrapper">
+					{% include "include/headerlogin.html" %}
+
+
+  {% block content %}
+  
+  {% if ch == '4' %}
+   <div style="margin-left:35%;margin-top:2%;color:#00e883;" class="display-4">
+      Delivered Laundry
+  </div>
+  {% elif ch == '1' %}
+  <div style="margin-left:35%;margin-top:2%;color:#00e883;" class="display-4">
+      Wating Laundry
+  </div>
+
+  {% elif ch == '3' %}
+  <div style="margin-left:35%;margin-top:2%;color:#00e883;" class="display-4">
+      Ready Laundry
+  </div>
+    {% else %}
+  <div style="margin-left:35%;margin-top:2%;color:#00e883;" class="display-4">
+        In progress Laundry
+    </div>
+      {% endif %}
+      {% if size == 1 %}
+  <div class="row" style="margin-top:6%;">
+    {% for cloth in clothe %}
+
+    <div class="card col-md-3 " style="margin-top:1%;margin-left:6%;border-radius:10%;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; ">
+      <img src="{% static 'img/tsh.png'%}" class="card-img-top w-20" style="width:20%;" >
+      <div class="card-body">
+        <p class="card-text">{{cloth.name}} The type is : {{cloth.typeoflenge}} Quantity : {{cloth.quantityoflenge}} , Wheight : {{cloth.weight}}  ,Price : {{cloth.price}} , Date Of Receive : {{cloth.dateofreceive}} .</p>
+      </div>
+    </div>
+
+  {% endfor %}
+  </div>
+  {% else %}
+  <div style="margin-left:35%;margin-top:2%;color:#00e883;" class="display-4">
+      <img src="{% static 'img/search.png'%}" class="card-img-top" style="width:10%;margin-top:2%;margin-left:20%;" ><br>
+         No Results Found.
+    </div>
+    {% endif %}
+  {% endblock %}
+</div>
+
+
+
+	{% include "include/footer.html" %}
+
+
+
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/popper.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/slick.js' %}"></script>
+	<script src="{% static 'plugins/fancybox/jquery.fancybox.min.js' %}"></script>
+
+	<script src="{% static 'js/script.js' %}"></script>
+</body>
+
+
+</html>
